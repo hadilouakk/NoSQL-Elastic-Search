@@ -1,0 +1,37 @@
+[
+	{
+		"name": "Uriel Christensen",
+		"numberrange": 10,
+		"address": "P.O. Box 520, 2974 Ultrices. Road",
+		"email": "libero.at.auctor@icloud.com",
+		"country": "Canada"
+	},
+	{
+		"name": "Neil Reyes",
+		"numberrange": 9,
+		"address": "4556 Suspendisse Av.",
+		"email": "iaculis.nec@aol.net",
+		"country": "Sweden"
+	},
+	{
+		"name": "Lillith Marsh",
+		"numberrange": 10,
+		"address": "7593 Primis Av.",
+		"email": "feugiat.lorem@google.com",
+		"country": "Poland"
+	},
+	{
+		"name": "Venus Frazier",
+		"numberrange": 0,
+		"address": "549-7232 Nec Avenue",
+		"email": "orci@hotmail.net",
+		"country": "Mexico"
+	},
+	{
+		"name": "Phillip Hancock",
+		"numberrange": 7,
+		"address": "Ap #512-7409 Ut Avenue",
+		"email": "ipsum@yahoo.org",
+		"country": "Turkey"
+	}
+]

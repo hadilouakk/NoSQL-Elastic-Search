@@ -2,9 +2,9 @@ import json
 from pymongo import MongoClient
 
 # Connexion à MongoDB
-client = MongoClient("mongodb://localhost:27017/")  # Mets l'URL de ton MongoDB
-db = client.mydb  # Remplace par le nom de ta base de données
-collection = db.mycollection  # Remplace par le nom de ta collection
+client = MongoClient("mongodb://localhost:27017/")  
+db = client.mydb  
+collection = db.mycollection   
 
 
 with open("accounts.json", "r") as file:
@@ -34,7 +34,7 @@ results = collection.find({"balance": {"$gt": min_balance}})
 for result in results:
     print(result)
 
-    
+
 
 
 pipeline = [

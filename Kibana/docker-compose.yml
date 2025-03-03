@@ -1,24 +1,8 @@
-# version: "3"
-# services:
-#   kibana:
-#     image: kibana:7.6.2
-#     container_name: kibana
-#     environment:
-#       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-#     ports:
-#       - "5601:5601"
-#     networks:
-#       - dockerelk
-
-# networks:
-#   dockerelk:
-#     driver: bridge
-
 version: '2.2'
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.11.1
-    container_name: elasticsearch
+    container_name: elasticsearch-query
     restart: always
     environment:
       - xpack.security.enabled=false
@@ -41,7 +25,7 @@ services:
       - esnet
 
   kibana:
-    container_name: kibana
+    container_name: kibana-query
     image: docker.elastic.co/kibana/kibana:7.11.1
     restart: always
     ports:

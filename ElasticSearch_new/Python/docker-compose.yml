@@ -1,0 +1,70 @@
+version: '2.2'
+services:
+  espy01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: espy01
+    environment:
+      - node.name=espy01
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=espy02,espy03
+      - cluster.initial_master_nodes=espy01,espy02,espy03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+  espy02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: espy02
+    environment:
+      - node.name=espy02
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=espy01,espy03
+      - cluster.initial_master_nodes=espy01,espy02,espy03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data02:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+  espy03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: espy03
+    environment:
+      - node.name=espy03
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=espy01,espy02
+      - cluster.initial_master_nodes=espy01,espy02,espy03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data03:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+
+volumes:
+  data01:
+    driver: local
+  data02:
+    driver: local
+  data03:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
